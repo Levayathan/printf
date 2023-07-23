@@ -73,7 +73,7 @@ int print_string(va_list ap, params_t *params)
 		else
 			sum += _puts(str);
 	}
-	while (j++ < paraams->width)
+	while (j++ < params->width)
 		sum += _putchar(pad_char);
 	if (!params->minus_flag)
 	{
