@@ -4,7 +4,7 @@
  * get_specifier - finds the format func
  * @s: the format string
  *
- * Return : the number of bytes printed
+ * Return: the value 0
  */
 int (*get_specifier(char *s)) (va_list ap, params_t *params)
 {
@@ -44,7 +44,7 @@ int (*get_specifier(char *s)) (va_list ap, params_t *params)
  * @ap: argument pointer
  * @params: the parameters struct
  *
- * Return : the number of bytes printed
+ * Return: the number of bytes printed
  */
 int get_print_func(char *s, va_list ap, params_t *params)
 {
@@ -60,7 +60,7 @@ int get_print_func(char *s, va_list ap, params_t *params)
  * @s: the format string
  * @params: the parameters struct
  *
- * Return : if flag was valid
+ * Return: if flag was valid
  */
 int get_flag(char *s, params_t *params)
 {
@@ -92,7 +92,7 @@ int get_flag(char *s, params_t *params)
  * @s: the format string
  * @params: the parameters struct
  *
- * Return : if modifier was valid
+ * Return: if modifier was valid
  */
 int get_modifier(char *s, params_t *params)
 {
@@ -116,7 +116,7 @@ int get_modifier(char *s, params_t *params)
  * @ap: argument pointer
  * @params: the parameters struct
  *
- * Return : new pointer
+ * Return: new pointer
  */
 char *get_width(char *s, params_t *params, va_list ap)
 {
