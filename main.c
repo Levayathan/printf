@@ -11,10 +11,10 @@ int main(void)
 {
 	int len, len2;
 
-	len = _printf("%s%c%c%c%s%%%s%c", "Loading ", '.', '.', '.', " 99", " Plz wait
-			", '\n');
-	len2 = printf("%s%c%c%c%s%%%s%c", "Loading ", '.', '.', '.', " 99", " Plz wait
-			", '\n');
+	len = _printf("%s%c%c%c%s%%%s%c", "Loading ", '.', '.', '.', " 99",
+		" Plz wait", '\n');
+	len2 = printf("%s%c%c%c%s%%%s%c", "Loading ", '.', '.', '.', " 99",
+		" Plz wait", '\n');
 	fflush(stdout);
 	if (len != len2)
 	{
