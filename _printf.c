@@ -4,7 +4,7 @@
  * _printf - Prints any data given
  * @format: The format string
  *
- * Return: The number of bytes printed by printf
+ * Return: the number of characters printed
  */
 
 int _printf(const char *format, ...)
@@ -46,5 +46,5 @@ int _printf(const char *format, ...)
 	}
 	_putchar(BUF_FLUSH);
 	va_end(ap);
-	return (sum);
+	return (sum - 1);
 }
