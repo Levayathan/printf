@@ -48,6 +48,16 @@ int print_number(char *str, params_t *params)
 		str++;
 		i--;
 	}
+	int str_len = _strlen(str);
+	int precision = params->precision;
+
+	if (precision > str_len)
+	{
+		int padding = precision - str_len;
+
+		memmove(&str[padding], str, str_len + 1);
+		memset(str, '0', padding);
+	}
 	if (params->precision != UINT_MAX)
 		while (i++ < params->precision)
 			*--str = '0';

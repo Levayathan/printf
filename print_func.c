@@ -54,39 +54,63 @@ int print_int(va_list ap, params_t *params)
 
 int print_string(va_list ap, params_t *params)
 {
-	char *str = va_arg(ap, char *), pad_char = ' ';
-	unsigned int pad = 0, sum = 0, i = 0, j;
+	if (!str)
+	str = "(null)";
 
-	(void)params;
-	switch ((int)(!str))
-	case 1:
-		str = NULL_STRING;
+	int len = _strlen(str);
 
-	j = pad = _strlen(str);
-	if (params->precision < pad)
-		j = pad = params->precision;
-
-	if (params->minus_flag)
-	{
-		if (params->precision != UINT_MAX)
-			for (i = 0; i < pad; i++)
-				sum += _putchar(*str++);
-		else
-			sum += _puts(str);
-	}
-	while (j++ < params->width)
-		sum += _putchar(pad_char);
+	int precision = params->precision;
+	if (precision >= 0 && precision < len)
+		len = precision;
 	if (!params->minus_flag)
-	{
-		if (params->precision != UINT_MAX)
-			for (i = 0; i < pad; i++)
-				sum += _putchar(*str++);
-		else
-			sum += _puts(str);
-	}
-	return (sum);
+		return (print_string_right_shift(str, len, params));
+	else
+		return (print_string_left_shift(str, len, params));
 }
 
+/**
+ * print_string_right_shift - prints a string with a right shift option
+ * @str: The string to print
+ * @len: The length of the string to print
+ * @params: The parameters struct
+ *
+ * Return: The number of characters printed
+ */
+int print_string_right_shift(char *str, int len, params_t *params)
+{
+	int n = 0;
+	char pad_char = ' ';
+
+	if (params->zero_flag && !params->minus_flag)
+		pad_char = '0';
+
+	for (int i = len; i < params->width; i++)
+		n += _putchar(pad_char);
+
+	for (int i = 0; i < len; i++)
+		n += _putchar(*str++);
+	return (n);
+}
+
+/**
+ * print_string_left_shift - prints a string with a left shift option
+ * @str: The string to print
+ * @len: The length of the string to print
+ * @params: The parameters struct
+ *
+ * Return: The number of characters printed
+ */
+int print_string_left_shift(char *str, int len, params_t *params)
+{
+	int n = 0;
+
+	for (int i = 0; i < len; i++)
+		n += _putchar(*str++);
+
+	for (int i = len; i < params->width; i++)
+		n += _putchar(' ');
+	return (n);
+}
 /**
  * print_percent - prints percentage symbol
  * @ap: argument pointer
