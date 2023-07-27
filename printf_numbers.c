@@ -71,7 +71,7 @@ int print_address(va_list ap, params_t *params)
 	char *str;
 
 	if (!n)
-		return (puts("(null)"));
+		return (puts("(nil)"));
 	str = convert(n, 16, CONVERT_UNSIGNED | CONVERT_LOWERCASE, params);
 	*--str = 'x';
 	*--str = '0';
